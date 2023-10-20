@@ -1,4 +1,5 @@
 ﻿using Models;
+using System.Data.SqlTypes;
 
 namespace DAL
 {
@@ -8,7 +9,7 @@ namespace DAL
         {
 
         }
-        
+
         public void Alterar(Usuario _usuario)
         {
 
