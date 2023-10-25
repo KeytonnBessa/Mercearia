@@ -6,6 +6,7 @@
         public string Nome { get; set; }
         public double Preco { get; set; }
         public double Estoque { get; set; }
+        public string CodigoDeBarra { get; set; }
 
 
 

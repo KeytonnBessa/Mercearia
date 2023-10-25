@@ -33,6 +33,13 @@ namespace BLL
         {
             return new ProdutoDAL().BuscarPorId(_id);
         }
-
+        public List<Produto> BuscarProdutoPorNome(string _nome)
+        {
+            return new ProdutoDAL().BuscarProdutoPorNome(_nome);
+        }
+        public Produto BuscarPorCodigoDeBarra(string _codigoDeBarra)
+        {
+            return new ProdutoDAL().BuscarPorCodigoDeBarra(_codigoDeBarra);
+        }
     }
 }

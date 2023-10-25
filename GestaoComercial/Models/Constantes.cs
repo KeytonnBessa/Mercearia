@@ -17,7 +17,7 @@ namespace Models
             }
         }
         
-        //SqlConnection cn = new SqlConnection("User ID=SA;Initial Catalog=Mercearia,Data Source=.\\sqlexpress2019;Password=Senailab02");
+        
 
     }
 }

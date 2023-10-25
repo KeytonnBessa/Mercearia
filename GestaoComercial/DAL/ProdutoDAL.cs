@@ -12,13 +12,14 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Produto(Nome, Preco, Estoque)
-                                    VALUES(@Nome, @Preco, @Estoque)";
+                cmd.CommandText = @"INSERT INTO Produto(Nome, Preco, Estoque, CodigoDeBarra)
+                                    VALUES(@Nome, @Preco, @Estoque, @CodigoDeBarra)";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Nome", _produto.Nome);
                 cmd.Parameters.AddWithValue("@Preco", _produto.Preco);
                 cmd.Parameters.AddWithValue("@Estoque", _produto.Estoque);
+                cmd.Parameters.AddWithValue("@CodigoDeBarra", _produto.CodigoDeBarra);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -41,14 +42,16 @@ namespace DAL
             {
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"UPDATE Produto
-                SET Nome = @Nome, Preco = @Preco, Estoque = @Estoque
+                SET Nome = @Nome, Preco = @Preco, Estoque = @Estoque, CodigoDeBarra = @CodigoDeBarra
                 WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Nome", _produto.Nome);
                 cmd.Parameters.AddWithValue("@Preco", _produto.Preco);
                 cmd.Parameters.AddWithValue("@Estoque", _produto.Estoque);
+                cmd.Parameters.AddWithValue("@CodigoDeBarra", _produto.CodigoDeBarra);
                 cmd.Parameters.AddWithValue("@Id", _produto.Id);
+
 
                 cn.Open();
                 cmd.ExecuteNonQuery();
@@ -56,7 +59,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
+                throw new Exception("Ocorreu um erro ao tentar alterar o produto no banco de dados", ex);
             }
             finally
             {
@@ -80,7 +83,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
+                throw new Exception("Ocorreu um erro ao tentar excluir o produto no banco de dados", ex);
             }
             finally
             {
@@ -97,7 +100,7 @@ namespace DAL
             {
                 SqlCommand cmd = cn.CreateCommand();
 
-                cmd.CommandText = "SELECT Id, Nome, Preco, Estoque FROM Produto";
+                cmd.CommandText = "SELECT Id, Nome, Preco, Estoque, CodigoDeBarra FROM Produto";
                 cmd.CommandType = System.Data.CommandType.Text;
 
 
@@ -109,8 +112,9 @@ namespace DAL
                         produto = new Produto();
                         produto.Id = (int)rd["Id"];
                         produto.Nome = rd["Nome"].ToString();
-                        produto.Preco = (float)rd["Preco"];
-                        produto.Estoque = (float)rd["Estoque"];
+                        produto.Preco = (double)rd["Preco"];
+                        produto.Estoque = (double)rd["Estoque"];
+                        produto.CodigoDeBarra = rd["CodigoDeBarra"].ToString();
                         produtoList.Add(produto);
                     }
                 }
@@ -119,7 +123,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar o produto no banco de dados", ex);
             }
             finally
             {
@@ -135,7 +139,7 @@ namespace DAL
             {
                 SqlCommand cmd = cn.CreateCommand();
 
-                cmd.CommandText = "SELECT Id, Nome, Preco, Estoque FROM Produto WHERE Id = @Id";
+                cmd.CommandText = "SELECT Id, Nome, Preco, Estoque, CodigoDeBarra FROM Produto WHERE Id = @Id";
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Id", _id);
@@ -148,8 +152,9 @@ namespace DAL
                     {
                         produto.Id = (int)rd["Id"];
                         produto.Nome = rd["Nome"].ToString();
-                        produto.Preco = (float)rd["Preco"];
-                        produto.Estoque = (float)rd["Estoque"];
+                        produto.Preco = (double)rd["Preco"];
+                        produto.Estoque = (double)rd["Estoque"];
+                        produto.CodigoDeBarra = rd["CodigoDeBarra"].ToString();
                     }
                 }
 
@@ -157,7 +162,90 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
+                throw new Exception("Ocorreu um erro ao tentar buscar o produto no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public List<Produto> BuscarProdutoPorNome(string _nome)
+        {
+            List<Produto> produtoList = new List<Produto>();
+            Produto produto;
+            SqlConnection cn = new SqlConnection(Constantes.StringDeConexao);
+
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+
+                cmd.CommandText = "SELECT Id, Nome, Preco, Estoque, CodigoDeBarra FROM Produto WHERE Nome LIKE @Nome";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@Nome", "%" + _nome + "%");
+
+
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        produto = new Produto();
+                        produto.Id = (int)rd["Id"];
+                        produto.Nome = rd["Nome"].ToString();
+                        produto.Preco = (double)rd["Preco"];
+                        produto.Estoque = (double)rd["Estoque"];
+                        produto.CodigoDeBarra = rd["CodigoDeBarra"].ToString();
+                        produtoList.Add(produto);
+                    }
+                }
+
+                return produtoList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar buscar o produto no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
+        public Produto BuscarPorCodigoDeBarra(string _codigoDeBarra)
+        {
+            Produto produto;
+            SqlConnection cn = new SqlConnection(Constantes.StringDeConexao);
+
+            try
+            {
+                SqlCommand cmd = cn.CreateCommand();
+
+                cmd.CommandText = "SELECT Id, Nome, Preco, Estoque, CodigoDeBarra FROM Produto WHERE CodigoDeBarra = @CodigoDeBarra";
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@CodigoDeBarra", _codigoDeBarra);
+
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    produto = new Produto();
+                    if (rd.Read())
+                    {
+                        produto.Id = (int)rd["Id"];
+                        produto.Nome = rd["Nome"].ToString();
+                        produto.Preco = (double)rd["Preco"];
+                        produto.Estoque = (double)rd["Estoque"];
+                        produto.CodigoDeBarra = rd["CodigoDeBarra"].ToString();
+                    }
+                }
+
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar buscar o produto no banco de dados", ex);
             }
             finally
             {

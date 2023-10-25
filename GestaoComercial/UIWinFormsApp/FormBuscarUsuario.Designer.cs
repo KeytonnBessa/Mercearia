@@ -192,6 +192,7 @@
             this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
             this.comboBoxBuscarPor.Size = new System.Drawing.Size(112, 28);
             this.comboBoxBuscarPor.TabIndex = 5;
+            this.comboBoxBuscarPor.SelectedIndexChanged += new System.EventHandler(this.comboBoxBuscarPor_SelectedIndexChanged);
             // 
             // FormBuscarUsuario
             // 
