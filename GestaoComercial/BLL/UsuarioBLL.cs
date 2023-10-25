@@ -33,5 +33,15 @@ namespace BLL
         {
             return new UsuarioDAL().BuscarPorId(_id);
         }
+
+        public List<Usuario> BuscarPorNome(string _nome)
+        {
+            return new UsuarioDAL().buscarPorNome(_nome);
+        }
+
+        public Usuario BuscarPorNomeUsuario(string _nomeUsuario)
+        {
+            return new UsuarioDAL().buscarPorNomeUsuario(_nomeUsuario);
+        }
     }
 }

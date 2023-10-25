@@ -39,19 +39,20 @@
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.dataGridViewUsuario = new System.Windows.Forms.DataGridView();
-            this.bindingSourceUsuario = new System.Windows.Forms.BindingSource(this.components);
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeUsuarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ativoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bindingSourceUsuario = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBoxBuscarPor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxBuscarPor
             // 
-            this.textBoxBuscarPor.Location = new System.Drawing.Point(12, 91);
+            this.textBoxBuscarPor.Location = new System.Drawing.Point(130, 91);
             this.textBoxBuscarPor.Name = "textBoxBuscarPor";
-            this.textBoxBuscarPor.Size = new System.Drawing.Size(482, 27);
+            this.textBoxBuscarPor.Size = new System.Drawing.Size(364, 27);
             this.textBoxBuscarPor.TabIndex = 0;
             // 
             // buttonBuscar
@@ -67,7 +68,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 68);
+            this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
             this.label1.TabIndex = 2;
@@ -149,10 +150,6 @@
             this.dataGridViewUsuario.Size = new System.Drawing.Size(893, 279);
             this.dataGridViewUsuario.TabIndex = 4;
             // 
-            // bindingSourceUsuario
-            // 
-            this.bindingSourceUsuario.DataSource = typeof(Models.Usuario);
-            // 
             // nomeDataGridViewTextBoxColumn
             // 
             this.nomeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -180,11 +177,28 @@
             this.ativoDataGridViewCheckBoxColumn.ReadOnly = true;
             this.ativoDataGridViewCheckBoxColumn.Width = 60;
             // 
+            // bindingSourceUsuario
+            // 
+            this.bindingSourceUsuario.DataSource = typeof(Models.Usuario);
+            // 
+            // comboBoxBuscarPor
+            // 
+            this.comboBoxBuscarPor.FormattingEnabled = true;
+            this.comboBoxBuscarPor.Items.AddRange(new object[] {
+            "Nome",
+            "Nome de usuario",
+            "Todos"});
+            this.comboBoxBuscarPor.Location = new System.Drawing.Point(12, 90);
+            this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
+            this.comboBoxBuscarPor.Size = new System.Drawing.Size(112, 28);
+            this.comboBoxBuscarPor.TabIndex = 5;
+            // 
             // FormBuscarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 450);
+            this.Controls.Add(this.comboBoxBuscarPor);
             this.Controls.Add(this.dataGridViewUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -220,5 +234,6 @@
         private DataGridViewTextBoxColumn nomeUsuarioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn ativoDataGridViewCheckBoxColumn;
         private BindingSource bindingSourceUsuario;
+        private ComboBox comboBoxBuscarPor;
     }
 }
