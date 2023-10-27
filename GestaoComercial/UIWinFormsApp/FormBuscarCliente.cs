@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,29 @@ namespace UIWinFormsApp
         public FormBuscarCliente()
         {
             InitializeComponent();
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (comboBoxBuscarPor.SelectedIndex)
+                {
+                    case 0:
+                        bindingSourceCliente.DataSource = new ClienteBLL().BuscarPorNome(textBoxBuscarPor.Text);
+                        break;
+                    case 1:
+                        bindingSourceCliente.DataSource = new ClienteBLL().BuscarPorTelefone(textBoxBuscarPor.Text);
+                        break;
+                    default:
+                        bindingSourceCliente.DataSource = new ClienteBLL().BuscarTodos();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

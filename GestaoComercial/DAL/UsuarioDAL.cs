@@ -9,30 +9,32 @@ namespace DAL
     {
         public void Inserir(Usuario _usuario)
         {
-            SqlConnection cn = new SqlConnection(Constantes.StringDeConexao);
-            try
+            using (SqlConnection cn = new SqlConnection(Constantes.StringDeConexao))
             {
-                SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Usuario(Nome, NomeUsuario, Senha, Ativo)
+                using (SqlCommand cmd = cn.CreateCommand())
+                {
+
+                    try
+                    {
+                        cmd.CommandText = @"INSERT INTO Usuario(Nome, NomeUsuario, Senha, Ativo)
                                     VALUES(@Nome, @NomeUsuario, @Senha, @Ativo)";
-                cmd.CommandType = System.Data.CommandType.Text;
+                        cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
-                cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
-                cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
-                cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
-                
-                cn.Open();
-                cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Nome", _usuario.Nome);
+                        cmd.Parameters.AddWithValue("@NomeUsuario", _usuario.NomeUsuario);
+                        cmd.Parameters.AddWithValue("@Senha", _usuario.Senha);
+                        cmd.Parameters.AddWithValue("@Ativo", _usuario.Ativo);
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
-            }
-            finally
-            {
-                cn.Close();
+                        cn.Open();
+                        cmd.ExecuteNonQuery();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
+                    }
+                }
+
             }
 
         }

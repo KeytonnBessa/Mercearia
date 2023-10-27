@@ -38,6 +38,10 @@ namespace BLL
         {
             return new ClienteDAL().BuscarPorNome(_nome);
         }
+        public List<Cliente> BuscarPorTelefone(string _fone)
+        {
+            return new ClienteDAL().BuscarPorTelefone(_fone);
+        }
 
     }
 }
