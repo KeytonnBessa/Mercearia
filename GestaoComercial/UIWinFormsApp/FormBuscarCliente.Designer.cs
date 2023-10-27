@@ -33,16 +33,16 @@
             this.buttonInserir = new System.Windows.Forms.Button();
             this.buttonAlterar = new System.Windows.Forms.Button();
             this.buttonExcluir = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonSalvar = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxBuscarPor = new System.Windows.Forms.TextBox();
             this.comboBoxBuscarPor = new System.Windows.Forms.ComboBox();
             this.dataGridViewCliente = new System.Windows.Forms.DataGridView();
-            this.bindingSourceCliente = new System.Windows.Forms.BindingSource(this.components);
             this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.foneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCliente = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCliente)).BeginInit();
             this.SuspendLayout();
@@ -84,23 +84,23 @@
             this.buttonExcluir.Text = "E&xcluir";
             this.buttonExcluir.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonSalvar
             // 
-            this.button5.Location = new System.Drawing.Point(783, 475);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 29);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "button1";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonSalvar.Location = new System.Drawing.Point(783, 475);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(94, 29);
+            this.buttonSalvar.TabIndex = 0;
+            this.buttonSalvar.Text = "Salvar";
+            this.buttonSalvar.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonCancelar
             // 
-            this.button6.Location = new System.Drawing.Point(892, 475);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 29);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "button1";
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Location = new System.Drawing.Point(892, 475);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(94, 29);
+            this.buttonCancelar.TabIndex = 0;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -134,6 +134,7 @@
             this.comboBoxBuscarPor.FormattingEnabled = true;
             this.comboBoxBuscarPor.Items.AddRange(new object[] {
             "Nome",
+            "Telefone",
             "Todos"});
             this.comboBoxBuscarPor.Location = new System.Drawing.Point(5, 125);
             this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
@@ -159,10 +160,6 @@
             this.dataGridViewCliente.Size = new System.Drawing.Size(970, 279);
             this.dataGridViewCliente.TabIndex = 4;
             // 
-            // bindingSourceCliente
-            // 
-            this.bindingSourceCliente.DataSource = typeof(Models.Cliente);
-            // 
             // nomeDataGridViewTextBoxColumn
             // 
             this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
@@ -181,18 +178,23 @@
             this.foneDataGridViewTextBoxColumn.ReadOnly = true;
             this.foneDataGridViewTextBoxColumn.Width = 295;
             // 
+            // bindingSourceCliente
+            // 
+            this.bindingSourceCliente.DataSource = typeof(Models.Cliente);
+            // 
             // FormBuscarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancelar;
             this.ClientSize = new System.Drawing.Size(994, 516);
             this.Controls.Add(this.dataGridViewCliente);
             this.Controls.Add(this.comboBoxBuscarPor);
             this.Controls.Add(this.textBoxBuscarPor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.buttonExcluir);
             this.Controls.Add(this.buttonAlterar);
             this.Controls.Add(this.buttonInserir);
@@ -212,8 +214,8 @@
         private Button buttonInserir;
         private Button buttonAlterar;
         private Button buttonExcluir;
-        private Button button5;
-        private Button button6;
+        private Button buttonSalvar;
+        private Button buttonCancelar;
         private Label label1;
         private Label label2;
         private TextBox textBoxBuscarPor;

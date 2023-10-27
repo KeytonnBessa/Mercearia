@@ -6,88 +6,126 @@ namespace DAL
 {
     public class ProdutoDAL
     {
-        public void Inserir(Produto _produto)
+        public void Inserir(Produto _produto, SqlTransaction _transaction = null)
         {
-            SqlConnection cn = new SqlConnection(Constantes.StringDeConexao);
-            try
+            SqlTransaction transaction = _transaction;
+            using (SqlConnection cn = new SqlConnection(Constantes.StringDeConexao))
             {
-                SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO Produto(Nome, Preco, Estoque, CodigoDeBarra)
+                using (SqlCommand cmd = new SqlCommand(@"INSERT INTO Produto(Nome, Preco, Estoque, CodigoDeBarra)
+                                    VALUES(@Nome, @Preco, @Estoque, @CodigoDeBarra)"))
+                {
+                    try
+                    {
+                        cmd.CommandText = @"INSERT INTO Produto(Nome, Preco, Estoque, CodigoDeBarra)
                                     VALUES(@Nome, @Preco, @Estoque, @CodigoDeBarra)";
-                cmd.CommandType = System.Data.CommandType.Text;
+                        cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.Parameters.AddWithValue("@Nome", _produto.Nome);
-                cmd.Parameters.AddWithValue("@Preco", _produto.Preco);
-                cmd.Parameters.AddWithValue("@Estoque", _produto.Estoque);
-                cmd.Parameters.AddWithValue("@CodigoDeBarra", _produto.CodigoDeBarra);
+                        cmd.Parameters.AddWithValue("@Nome", _produto.Nome);
+                        cmd.Parameters.AddWithValue("@Preco", _produto.Preco);
+                        cmd.Parameters.AddWithValue("@Estoque", _produto.Estoque);
+                        cmd.Parameters.AddWithValue("@CodigoDeBarra", _produto.CodigoDeBarra);
 
-                cn.Open();
-                cmd.ExecuteNonQuery();
+                        if (_transaction == null)
+                        {
+                            cn.Open();
+                            transaction = cn.BeginTransaction();
+                        }
+                        cmd.Transaction = transaction;
+                        cmd.Connection = transaction.Connection;
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
-            }
-            finally
-            {
-                cn.Close();
+                        cmd.ExecuteNonQuery();
+
+                        if (_transaction == null)
+                            transaction.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (transaction.Connection != null && transaction.Connection.State == System.Data.ConnectionState.Open)
+                            transaction.Rollback();
+                        throw new Exception("Ocorreu um erro ao tentar inserir o usuario no banco de dados", ex);
+                    }
+                }
             }
         }
 
-        public void Alterar(Produto _produto)
+        public void Alterar(Produto _produto, SqlTransaction _transaction = null)
         {
-            SqlConnection cn = new SqlConnection(Constantes.StringDeConexao);
-            try
+            SqlTransaction transaction = _transaction;
+            using (SqlConnection cn = new SqlConnection(Constantes.StringDeConexao))
             {
-                SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"UPDATE Produto
+                using (SqlCommand cmd = new SqlCommand(@"UPDATE Produto
                 SET Nome = @Nome, Preco = @Preco, Estoque = @Estoque, CodigoDeBarra = @CodigoDeBarra
-                WHERE Id = @Id";
-                cmd.CommandType = System.Data.CommandType.Text;
+                WHERE Id = @Id"))
+                {
+                    try
+                    {
+                        cmd.CommandType = System.Data.CommandType.Text;
 
-                cmd.Parameters.AddWithValue("@Nome", _produto.Nome);
-                cmd.Parameters.AddWithValue("@Preco", _produto.Preco);
-                cmd.Parameters.AddWithValue("@Estoque", _produto.Estoque);
-                cmd.Parameters.AddWithValue("@CodigoDeBarra", _produto.CodigoDeBarra);
-                cmd.Parameters.AddWithValue("@Id", _produto.Id);
+                        cmd.Parameters.AddWithValue("@Nome", _produto.Nome);
+                        cmd.Parameters.AddWithValue("@Preco", _produto.Preco);
+                        cmd.Parameters.AddWithValue("@Estoque", _produto.Estoque);
+                        cmd.Parameters.AddWithValue("@CodigoDeBarra", _produto.CodigoDeBarra);
+                        cmd.Parameters.AddWithValue("@Id", _produto.Id);
 
+                        if (_transaction == null)
+                        {
+                            cn.Open();
+                            transaction = cn.BeginTransaction();
+                        }
+                        cmd.Transaction = transaction;
+                        cmd.Connection = transaction.Connection;
 
-                cn.Open();
-                cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar alterar o produto no banco de dados", ex);
-            }
-            finally
-            {
-                cn.Close();
+                        if (_transaction == null)
+                            transaction.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (transaction.Connection != null && transaction.Connection.State == System.Data.ConnectionState.Open)
+                            transaction.Rollback();
+                        throw new Exception("Ocorreu um erro ao tentar alterar o produto no banco de dados", ex);
+                    }
+                }
             }
         }
-        public void Excluir(int _id)
+        public void Excluir(int _id, SqlTransaction _transaction = null)
         {
-            SqlConnection cn = new SqlConnection(Constantes.StringDeConexao);
-            try
+            SqlTransaction transaction = _transaction;
+            using (SqlConnection cn = new SqlConnection(Constantes.StringDeConexao))
             {
-                SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"DELETE FROM Produto WHERE Id = @Id";
-                cmd.CommandType = System.Data.CommandType.Text;
+                using (SqlCommand cmd = new SqlCommand(@"DELETE FROM Produto WHERE Id = @Id"))
+                {
 
-                cmd.Parameters.AddWithValue("@Id", _id);
+                    try
+                    {
+                        cmd.CommandType = System.Data.CommandType.Text;
 
-                cn.Open();
-                cmd.ExecuteNonQuery();
+                        cmd.Parameters.AddWithValue("@Id", _id);
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocorreu um erro ao tentar excluir o produto no banco de dados", ex);
-            }
-            finally
-            {
-                cn.Close();
+                        if (_transaction == null)
+                        {
+                            cn.Open();
+                            transaction = cn.BeginTransaction();
+                        }
+                        cmd.Transaction = transaction;
+                        cmd.Connection = transaction.Connection;
+
+                        cmd.ExecuteNonQuery();
+
+                        if (_transaction == null)
+                            transaction.Commit();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (transaction.Connection != null && transaction.Connection.State == System.Data.ConnectionState.Open)
+                            transaction.Rollback();
+                        throw new Exception("Ocorreu um erro ao tentar excluir o produto no banco de dados", ex);
+                    }
+                }
             }
         }
         public List<Produto> BuscarTodos()

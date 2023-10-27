@@ -22,10 +22,25 @@ namespace UIWinFormsApp
                 frm.ShowDialog();
             }
         }
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FormBuscarCliente frm = new FormBuscarCliente())
+            {
+                frm.ShowDialog();
+            }
+        }
 
         private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clientesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            using (FormBuscarCliente frm = new FormBuscarCliente())
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }
