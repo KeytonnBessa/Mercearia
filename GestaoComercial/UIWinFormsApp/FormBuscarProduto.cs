@@ -68,5 +68,11 @@ namespace UIWinFormsApp
             bindingSourceProduto.RemoveCurrent();
             MessageBox.Show("Registro Excluido com sucesso!");
         }
+
+        private void FormBuscarProduto_Load(object sender, EventArgs e)
+        {
+            comboBoxBuscarPor.SelectedIndex = comboBoxBuscarPor.Items.Count - 1;
+            buttonBuscar_Click(sender, e);
+        }
     }
 }

@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Mercearia]    Script Date: 20/10/2023 09:11:06 ******/
+/****** Object:  Database [Mercearia]    Script Date: 30/10/2023 10:00:04 ******/
 CREATE DATABASE [Mercearia]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,13 +80,13 @@ ALTER DATABASE [Mercearia] SET QUERY_STORE = OFF
 GO
 USE [Mercearia]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 20/10/2023 09:11:06 ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 30/10/2023 10:00:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Cliente](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nome] [varchar](150) NULL,
 	[Fone] [varchar](15) NULL,
  CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
@@ -95,29 +95,30 @@ CREATE TABLE [dbo].[Cliente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Produto]    Script Date: 20/10/2023 09:11:06 ******/
+/****** Object:  Table [dbo].[Produto]    Script Date: 30/10/2023 10:00:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Produto](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nome] [varchar](150) NULL,
 	[Preco] [float] NULL,
 	[Estoque] [float] NULL,
+	[CodigoDeBarra] [varchar](15) NULL,
  CONSTRAINT [PK_Produto] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 20/10/2023 09:11:06 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 30/10/2023 10:00:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Usuario](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nome] [varchar](150) NULL,
 	[NomeUsuario] [varchar](50) NULL,
 	[Senha] [varchar](50) NULL,
