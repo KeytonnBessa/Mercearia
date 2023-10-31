@@ -72,6 +72,7 @@
             this.textBoxSenha.Name = "textBoxSenha";
             this.textBoxSenha.Size = new System.Drawing.Size(263, 27);
             this.textBoxSenha.TabIndex = 0;
+            this.textBoxSenha.UseSystemPasswordChar = true;
             // 
             // textBoxConfirmacaoSenha
             // 
@@ -79,6 +80,7 @@
             this.textBoxConfirmacaoSenha.Name = "textBoxConfirmacaoSenha";
             this.textBoxConfirmacaoSenha.Size = new System.Drawing.Size(270, 27);
             this.textBoxConfirmacaoSenha.TabIndex = 0;
+            this.textBoxConfirmacaoSenha.UseSystemPasswordChar = true;
             // 
             // labelNome
             // 
@@ -177,8 +179,13 @@
             this.Controls.Add(this.textBoxSenha);
             this.Controls.Add(this.textBoxNomeUsuario);
             this.Controls.Add(this.textBoxNome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCadastrarUsuario";
-            this.Text = "FormCadastrarUsuario";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Cadastrar Usuário";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

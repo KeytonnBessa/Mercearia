@@ -54,7 +54,7 @@
             this.buttonInserir.Location = new System.Drawing.Point(692, 138);
             this.buttonInserir.Name = "buttonInserir";
             this.buttonInserir.Size = new System.Drawing.Size(94, 29);
-            this.buttonInserir.TabIndex = 0;
+            this.buttonInserir.TabIndex = 3;
             this.buttonInserir.Text = "&Inserir";
             this.buttonInserir.UseVisualStyleBackColor = true;
             this.buttonInserir.Click += new System.EventHandler(this.buttonInserir_Click);
@@ -64,7 +64,7 @@
             this.buttonAlterar.Location = new System.Drawing.Point(592, 138);
             this.buttonAlterar.Name = "buttonAlterar";
             this.buttonAlterar.Size = new System.Drawing.Size(94, 29);
-            this.buttonAlterar.TabIndex = 0;
+            this.buttonAlterar.TabIndex = 2;
             this.buttonAlterar.Text = "&Alterar";
             this.buttonAlterar.UseVisualStyleBackColor = true;
             this.buttonAlterar.Click += new System.EventHandler(this.buttonAlterar_Click);
@@ -74,7 +74,7 @@
             this.buttonExcluir.Location = new System.Drawing.Point(792, 138);
             this.buttonExcluir.Name = "buttonExcluir";
             this.buttonExcluir.Size = new System.Drawing.Size(94, 29);
-            this.buttonExcluir.TabIndex = 0;
+            this.buttonExcluir.TabIndex = 4;
             this.buttonExcluir.Text = "E&xcluir";
             this.buttonExcluir.UseVisualStyleBackColor = true;
             this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
@@ -84,7 +84,7 @@
             this.buttonBuscar.Location = new System.Drawing.Point(492, 138);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(94, 29);
-            this.buttonBuscar.TabIndex = 0;
+            this.buttonBuscar.TabIndex = 1;
             this.buttonBuscar.Text = "&Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
             this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
@@ -94,7 +94,7 @@
             this.buttonSalvar.Location = new System.Drawing.Point(692, 454);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(94, 29);
-            this.buttonSalvar.TabIndex = 0;
+            this.buttonSalvar.TabIndex = 5;
             this.buttonSalvar.Text = "&Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
             // 
@@ -103,7 +103,7 @@
             this.buttonCancelar.Location = new System.Drawing.Point(792, 454);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(94, 29);
-            this.buttonCancelar.TabIndex = 0;
+            this.buttonCancelar.TabIndex = 6;
             this.buttonCancelar.Text = "&Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
@@ -113,7 +113,7 @@
             this.label1.Location = new System.Drawing.Point(12, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 20);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 9;
             this.label1.Text = "Buscar por";
             // 
             // label2
@@ -123,7 +123,7 @@
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(913, 54);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 10;
             this.label2.Text = "Buscar Produto";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -132,7 +132,7 @@
             this.textBoxBuscarPor.Location = new System.Drawing.Point(176, 141);
             this.textBoxBuscarPor.Name = "textBoxBuscarPor";
             this.textBoxBuscarPor.Size = new System.Drawing.Size(310, 27);
-            this.textBoxBuscarPor.TabIndex = 2;
+            this.textBoxBuscarPor.TabIndex = 0;
             // 
             // comboBoxBuscarPor
             // 
@@ -145,7 +145,7 @@
             this.comboBoxBuscarPor.Location = new System.Drawing.Point(12, 139);
             this.comboBoxBuscarPor.Name = "comboBoxBuscarPor";
             this.comboBoxBuscarPor.Size = new System.Drawing.Size(151, 28);
-            this.comboBoxBuscarPor.TabIndex = 3;
+            this.comboBoxBuscarPor.TabIndex = 8;
             // 
             // dataGridViewProduto
             // 
@@ -166,7 +166,7 @@
             this.dataGridViewProduto.RowHeadersWidth = 51;
             this.dataGridViewProduto.RowTemplate.Height = 29;
             this.dataGridViewProduto.Size = new System.Drawing.Size(874, 274);
-            this.dataGridViewProduto.TabIndex = 4;
+            this.dataGridViewProduto.TabIndex = 7;
             // 
             // nomeDataGridViewTextBoxColumn
             // 
@@ -225,8 +225,14 @@
             this.Controls.Add(this.buttonExcluir);
             this.Controls.Add(this.buttonAlterar);
             this.Controls.Add(this.buttonInserir);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormBuscarProduto";
-            this.Text = "FormBuscarProduto";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Buscar Produto";
             this.Load += new System.EventHandler(this.FormBuscarProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduto)).EndInit();

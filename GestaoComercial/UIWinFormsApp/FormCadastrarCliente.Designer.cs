@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.bindingSourceCliente = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxFone = new System.Windows.Forms.TextBox();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.bindingSourceCliente = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +47,10 @@
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(222, 27);
             this.textBoxNome.TabIndex = 0;
+            // 
+            // bindingSourceCliente
+            // 
+            this.bindingSourceCliente.DataSource = typeof(Models.Cliente);
             // 
             // textBoxFone
             // 
@@ -104,10 +108,6 @@
             this.label3.Text = "Cadastrar Cliente";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // bindingSourceCliente
-            // 
-            this.bindingSourceCliente.DataSource = typeof(Models.Cliente);
-            // 
             // FormCadastrarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -121,8 +121,13 @@
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.textBoxFone);
             this.Controls.Add(this.textBoxNome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormCadastrarCliente";
-            this.Text = "FormCadastrarCliente";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Cadastrar Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

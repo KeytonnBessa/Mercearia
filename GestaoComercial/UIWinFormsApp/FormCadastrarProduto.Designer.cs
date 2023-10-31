@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.bindingSourceProduto = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxPreco = new System.Windows.Forms.TextBox();
             this.textBoxEstoque = new System.Windows.Forms.TextBox();
             this.textBoxCodigoDeBarra = new System.Windows.Forms.TextBox();
@@ -40,7 +41,6 @@
             this.cadastrarProduto = new System.Windows.Forms.Label();
             this.buttonSalvar = new System.Windows.Forms.Button();
             this.buttonCancelar = new System.Windows.Forms.Button();
-            this.bindingSourceProduto = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +51,10 @@
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(178, 27);
             this.textBoxNome.TabIndex = 0;
+            // 
+            // bindingSourceProduto
+            // 
+            this.bindingSourceProduto.DataSource = typeof(Models.Produto);
             // 
             // textBoxPreco
             // 
@@ -142,10 +146,6 @@
             this.buttonCancelar.Text = "&Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             // 
-            // bindingSourceProduto
-            // 
-            this.bindingSourceProduto.DataSource = typeof(Models.Produto);
-            // 
             // FormCadastrarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -163,8 +163,11 @@
             this.Controls.Add(this.textBoxEstoque);
             this.Controls.Add(this.textBoxPreco);
             this.Controls.Add(this.textBoxNome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormCadastrarProduto";
-            this.Text = "FormCadastrarProduto";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.Text = "Cadastrar Produto";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
